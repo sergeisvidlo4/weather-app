@@ -1,59 +1,84 @@
-# WeatherApp
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.2.2.
+# Weather App
 
-## Development server
+A responsive weather application built with Angular and TypeScript.
 
-To start a local development server, run:
+The app allows users to search for a city and view its current weather conditions using the Open-Meteo API.
 
-```bash
-ng serve
-```
+## Features
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+- Search for weather by city name
+- Display current temperature, humidity, and wind speed
+- Weather descriptions and icons
+- Dynamic styling based on weather conditions
+- 10-minute in-memory caching to reduce API requests
+- Loading and error states
+- Responsive design for desktop and mobile
 
-## Code scaffolding
+## Tech Stack
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+- Angular
+- TypeScript
+- SCSS
+- RxJS
+- Open-Meteo API
 
-```bash
-ng generate component component-name
-```
+## Getting Started
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+### Prerequisites
 
-```bash
-ng generate --help
-```
+- Node.js
+- npm
 
-## Building
+### Installation
 
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+Clone the repository:
 
 ```bash
-ng test
+git clone https://github.com/YOUR_USERNAME/weather-app.git
 ```
 
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
+Navigate to the project directory:
 
 ```bash
-ng e2e
+cd weather-app
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+Install dependencies:
 
-## Additional Resources
+```bash
+npm install
+```
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Start the development server:
+
+```bash
+npm start
+```
+
+Open http://localhost:4200 in your browser.
+
+## Production Build
+
+```bash
+npm run build
+```
+
+## API
+
+This application uses Open-Meteo:
+
+- Geocoding API for city search
+- Forecast API for current weather data
+
+No API key is required for non-commercial use.
+
+## Caching
+
+Weather responses are cached in memory for 10 minutes using a JavaScript Map.
+
+City names are normalized by trimming whitespace and converting to lowercase.
+
+Repeated searches for the same normalized city name return cached data without additional API requests until the cache expires.
+
+The cache is reset when the page is reloaded.

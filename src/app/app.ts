@@ -1,3 +1,4 @@
+
 import { Component, inject, signal } from '@angular/core';
 
 import { WeatherSearch } from './components/weather-search/weather-search';
@@ -20,6 +21,8 @@ export class App {
   error = signal('');
 
   onSearch(city: string): void {
+    if (this.loading()) return;
+
     this.loading.set(true);
     this.error.set('');
     this.weather.set(null);
@@ -29,8 +32,13 @@ export class App {
         this.weather.set(data);
         this.loading.set(false);
       },
-      error: () => {
-        this.error.set('Failed to load weather. Please try again.');
+      error: (error: Error) => {
+        if (error.message === 'City not found') {
+          this.error.set('City not found. Please check the spelling.');
+        } else {
+          this.error.set('Unable to load weather. Please try again later.');
+        }
+
         this.loading.set(false);
       },
     });

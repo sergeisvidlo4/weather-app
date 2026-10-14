@@ -1,4 +1,5 @@
-import { Component, output, signal } from '@angular/core';
+
+import { Component, input, output, signal } from '@angular/core';
 
 @Component({
   selector: 'app-weather-search',
@@ -9,6 +10,7 @@ import { Component, output, signal } from '@angular/core';
 export class WeatherSearch {
   city = signal('');
 
+  loading = input(false);
   search = output<string>();
 
   onCityChange(event: Event): void {
@@ -19,7 +21,7 @@ export class WeatherSearch {
   onSearch(): void {
     const cityName = this.city().trim();
 
-    if (!cityName) return;
+    if (!cityName || this.loading()) return;
 
     this.search.emit(cityName);
   }

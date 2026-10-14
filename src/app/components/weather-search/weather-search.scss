@@ -1,16 +1,27 @@
-.search {
-  display: flex;
+
+:host {
+  display: block;
   width: 100%;
   max-width: 450px;
+}
+
+.search {
+  display: flex;
   gap: 12px;
+  width: 100%;
 
   input {
     flex: 1;
     min-width: 0;
     padding: 12px 16px;
-    border: 1px solid #ccc;
+    border: 1px solid #cbd5e1;
     border-radius: 8px;
     font-size: 16px;
+
+    &:focus {
+      outline: 2px solid #2563eb;
+      outline-offset: 2px;
+    }
   }
 
   button {
@@ -22,8 +33,25 @@
     font-size: 16px;
     cursor: pointer;
 
-    &:hover {
+    &:hover:not(:disabled) {
       background: #1d4ed8;
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .search {
+    flex-direction: column;
+
+    input,
+    button {
+      width: 100%;
+      box-sizing: border-box;
     }
   }
 }

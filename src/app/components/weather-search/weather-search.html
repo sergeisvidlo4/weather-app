@@ -1,11 +1,18 @@
+
 <form class="search" (submit)="onSearch(); $event.preventDefault()">
   <input
     type="text"
     placeholder="Enter city name"
     aria-label="City name"
+    autocomplete="off"
     [value]="city()"
     (input)="onCityChange($event)"
   />
 
-  <button type="submit">Search</button>
+  <button
+    type="submit"
+    [disabled]="!city().trim() || loading()"
+  >
+    {{ loading() ? 'Searching...' : 'Search' }}
+  </button>
 </form>
