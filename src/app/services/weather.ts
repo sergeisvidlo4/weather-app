@@ -1,3 +1,4 @@
+
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {
@@ -44,7 +45,6 @@ export class WeatherService {
       const age = Date.now() - cached.timestamp;
 
       if (age < this.CACHE_TTL) {
-        console.log('Weather from cache:', cacheKey);
         return of(cached.data);
       }
 
@@ -92,8 +92,6 @@ export class WeatherService {
             data: weather,
             timestamp: Date.now(),
           });
-
-          console.log('Weather saved to cache:', cacheKey);
         })
       );
   }

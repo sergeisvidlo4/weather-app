@@ -3,15 +3,19 @@
 
 A responsive weather application built with Angular and TypeScript.
 
-The app allows users to search for a city and view its current weather conditions using the Open-Meteo API.
+The application allows users to search for a city and view its current weather conditions using the Open-Meteo API.
+
+## Live Demo
+
+https://weather-app-delta-eight-74.vercel.app/
 
 ## Features
 
-- Search for weather by city name
-- Display current temperature, humidity, and wind speed
+- Search for current weather by city name
+- Display temperature, humidity, and wind speed
 - Weather descriptions and icons
 - Dynamic styling based on weather conditions
-- 10-minute in-memory caching to reduce API requests
+- 10-minute in-memory caching
 - Loading and error states
 - Responsive design for desktop and mobile
 
@@ -27,7 +31,7 @@ The app allows users to search for a city and view its current weather condition
 
 ### Prerequisites
 
-- Node.js
+- Node.js (compatible with the project's Angular version)
 - npm
 
 ### Installation
@@ -35,7 +39,7 @@ The app allows users to search for a city and view its current weather condition
 Clone the repository:
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/weather-app.git
+git clone https://github.com/sergeisvidlo4/weather-app.git
 ```
 
 Navigate to the project directory:
@@ -66,10 +70,10 @@ npm run build
 
 ## API
 
-This application uses Open-Meteo:
+The application uses Open-Meteo:
 
-- Geocoding API for city search
-- Forecast API for current weather data
+- Geocoding API to find cities and their coordinates
+- Forecast API to retrieve current weather conditions
 
 No API key is required for non-commercial use.
 
@@ -79,6 +83,18 @@ Weather responses are cached in memory for 10 minutes using a JavaScript Map.
 
 City names are normalized by trimming whitespace and converting to lowercase.
 
-Repeated searches for the same normalized city name return cached data without additional API requests until the cache expires.
+Repeated searches using the same normalized city name return cached data without additional API requests until the cache expires.
 
-The cache is reset when the page is reloaded.
+The cache is cleared when the page is reloaded.
+
+## Limitations
+
+- The application uses the first matching city returned by the Geocoding API.
+- Different spellings of the same city may create separate cache entries.
+- The cache is stored in memory and does not persist across page reloads.
+
+## Author
+
+Serhii Svidlo
+
+GitHub: https://github.com/sergeisvidlo4
