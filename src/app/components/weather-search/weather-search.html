@@ -1,0 +1,11 @@
+<form class="search" (submit)="onSearch(); $event.preventDefault()">
+  <input
+    type="text"
+    placeholder="Enter city name"
+    aria-label="City name"
+    [value]="city()"
+    (input)="onCityChange($event)"
+  />
+
+  <button type="submit">Search</button>
+</form>

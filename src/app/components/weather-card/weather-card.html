@@ -1,0 +1,27 @@
+<article class="weather-card" [class]="condition().type">
+  <h2>{{ weather().city }}, {{ weather().country }}</h2>
+
+  <div class="weather-icon">
+    {{ condition().icon }}
+  </div>
+
+  <p class="weather-description">
+    {{ condition().description }}
+  </p>
+
+  <div class="temperature">
+    {{ weather().temperature }}°C
+  </div>
+
+  <div class="details">
+    <div>
+      <span>Humidity</span>
+      <strong>{{ weather().humidity }}%</strong>
+    </div>
+
+    <div>
+      <span>Wind speed</span>
+      <strong>{{ weather().windSpeed }} km/h</strong>
+    </div>
+  </div>
+</article>
